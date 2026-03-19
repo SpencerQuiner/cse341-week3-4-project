@@ -1,5 +1,5 @@
 ### Get all tasks
-GET https://cse341-week3-4-project.onrender.com
+GET https://cse341-week3-4-project.onrender.com/tasks
 
 ### Get single task
 GET https://cse341-week3-4-project.onrender.com/tasks/69bc4b7b1cd467fbf1d040f7
@@ -9,8 +9,8 @@ POST https://cse341-week3-4-project.onrender.com/tasks
 Content-Type: application/json
 
 {
-  "title": "Test Task2",
-  "description": "Testing timestamps2",
+  "title": "Add a new task",
+  "description": "testing adding a task",
   "status": "pending",
   "priority": "high",
   "dueDate": "2026-03-25",
@@ -22,7 +22,7 @@ PUT https://cse341-week3-4-project.onrender.com/tasks/69bc4b7b1cd467fbf1d040f7
 Content-Type: application/json
 
 {
-  "title": "Updated Task"
+  "title": "Add task list to render"
 }
 
 ### Delete a task
