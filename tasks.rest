@@ -1,0 +1,29 @@
+### Get all tasks
+GET http://localhost:3000/tasks
+
+### Get single task
+GET http://localhost:3000/tasks/69bc4b7b1cd467fbf1d040f7
+
+### Create a task
+POST http://localhost:3000/tasks
+Content-Type: application/json
+
+{
+  "title": "Test Task2",
+  "description": "Testing timestamps2",
+  "status": "pending",
+  "priority": "high",
+  "dueDate": "2026-03-25",
+  "userId": "test-user-1"
+}
+
+### Update a task
+PUT http://localhost:3000/tasks/69bc4b7b1cd467fbf1d040f7
+Content-Type: application/json
+
+{
+  "title": "Updated Task"
+}
+
+### Delete a task
+DELETE http://localhost:3000/tasks/69bc4bbd1cd467fbf1d040f9
