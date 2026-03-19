@@ -1,11 +1,11 @@
 ### Get all tasks
-GET http://localhost:3000/tasks
+GET https://cse341-week3-4-project.onrender.com
 
 ### Get single task
-GET http://localhost:3000/tasks/69bc4b7b1cd467fbf1d040f7
+GET https://cse341-week3-4-project.onrender.com/tasks/69bc4b7b1cd467fbf1d040f7
 
 ### Create a task
-POST http://localhost:3000/tasks
+POST https://cse341-week3-4-project.onrender.com/tasks
 Content-Type: application/json
 
 {
@@ -18,7 +18,7 @@ Content-Type: application/json
 }
 
 ### Update a task
-PUT http://localhost:3000/tasks/69bc4b7b1cd467fbf1d040f7
+PUT https://cse341-week3-4-project.onrender.com/tasks/69bc4b7b1cd467fbf1d040f7
 Content-Type: application/json
 
 {
@@ -26,4 +26,4 @@ Content-Type: application/json
 }
 
 ### Delete a task
-DELETE http://localhost:3000/tasks/69bc4bbd1cd467fbf1d040f9
+DELETE https://cse341-week3-4-project.onrender.com/tasks/69bc4bbd1cd467fbf1d040f9

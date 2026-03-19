@@ -5,7 +5,7 @@ const doc ={
         title: 'Tasks Api',
         description: 'API documentation for Task Manager project'
     },
-    host: 'localhost:3000',
+    host: 'cse341-week3-4-project.onrender.com',
     schemes: ['https']
 };
 
