@@ -5,7 +5,7 @@ const User = require('../models/user')
 const getAll = async (req, res, next) => {
     //#swagger.tags =['users']
     try {
-        const tasks = await User.find();
+        const users = await User.find();
         res.status(200).json(users);
     } catch (err) {
         res.status(500);
@@ -16,7 +16,7 @@ const getAll = async (req, res, next) => {
 
 // GET single user
 const getSingle = async (req, res, next) => {
-    //#swagger.tags =['tasks']
+    //#swagger.tags =['users']
     try {
         const user =await User.findById(req.params.id);
         if (!user) {
@@ -32,7 +32,7 @@ const getSingle = async (req, res, next) => {
 
 //POST -create new user
 const createUser = async(req, res, next) => {
-    //#swagger.tags =['tasks']
+    //#swagger.tags =['users']
     try {
         const user = new User(req.body);
         const savedUser = await user.save();
@@ -45,7 +45,7 @@ const createUser = async(req, res, next) => {
 
 //PUT update user
 const updateUser = async(req, res, next) => {
-    //#swagger.tags =['tasks']
+    //#swagger.tags =['users']
     try {
         const updatedUser = await User.findByIdAndUpdate(
             req.params.id,
@@ -65,11 +65,11 @@ const updateUser = async(req, res, next) => {
 };
 
 const deleteUser = async(req, res, next) => {
-    //#swagger.tags =['tasks']
+    //#swagger.tags =['users']
     try {
         const deletedUser = await User.findByIdAndDelete(req.params.id);
 
-        if (!deletedTask) {
+        if (!deletedUser) {
             res.status(404);
             throw new Error('User not found' );
         }

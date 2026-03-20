@@ -9,9 +9,9 @@ POST https://cse341-week3-4-project.onrender.com/users
 Content-Type: application/json
 
 {
-  "firstName": "John",
+  "firstName": "Jane",
   "lastName": "Doe",
-  "email": "john@email.com"
+  "email": "jane@email.com"
 }
 
 ### Update a user

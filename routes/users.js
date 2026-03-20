@@ -5,19 +5,72 @@ const userController = require('../controllers/userController');
 const validateUser = require('../middleware/validateUser');
 const validateObjectId = require('../middleware/validateObjectId');
 
-// GET all user
-router.get('/', userController.getAll);
+/**
+ * GET all users
+ */
+router.get('/',
+    /*
+    #swagger.tags = ['Users']
+    #swagger.description = 'Get all users'
+    */
+    userController.getAll);
 
-//GET single user
-router.get('/:id', validateObjectId, userController.getSingle);
+/**
+ * GET single user
+ */
+router.get('/:id', 
+    /*
+    #swagger.tags = ['Users']
+    #swagger.description = 'Get a single user by ID'
+    */
+    validateObjectId, userController.getSingle);
 
-//Create user
-router.post('/', validateUser.validateCreate, userController.createUser);
+/**
+ * CREATE user
+ */
+router.post('/', 
+    /*
+    #swagger.tags = ['Users']
+    #swagger.description = 'Create a new user'
+    #swagger.parameters['body'] = {
+        in: 'body',
+        description: 'User data',
+        required: true,
+        schema: {
+            firstName: 'John',
+            lastName: 'Doe',
+            email: 'john@email.com',
+        }
+    }
+    */
+    validateUser.validateCreate, userController.createUser);
 
-//Update user
-router.put('/:id', validateObjectId, validateUser.validateUpdate, userController.createUser);
+/**
+ * UPDATE user
+ */
+router.put('/:id', 
+    /*
+    #swagger.tags = ['Users']
+    #swagger.description = 'Update a user'
+    #swagger.parameters['body'] = {
+        in: 'body',
+        description: 'Updated user data',
+        required: true,
+        schema: {
+            firstName: 'Jane',
+        }
+    }
+    */
+    validateObjectId, validateUser.validateUpdate, userController.updateUser);
 
-//delete user
-router.delete('/:id', validateObjectId, userController.deleteUser);
+/**
+ * DELETE user
+ */
+router.delete('/:id', 
+    /*
+    #swagger.tags = ['Users']
+    #swagger.description = 'Delete a user'
+    */
+    validateObjectId, userController.deleteUser);
 
 module.exports = router;
