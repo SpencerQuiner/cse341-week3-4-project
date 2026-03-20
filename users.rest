@@ -1,0 +1,26 @@
+### Get all users
+GET https://cse341-week3-4-project.onrender.com/users
+
+### Get single user
+GET https://cse341-week3-4-project.onrender.com/users/userId
+
+### Create a user
+POST https://cse341-week3-4-project.onrender.com/users
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john@email.com"
+}
+
+### Update a user
+PUT https://cse341-week3-4-project.onrender.com/users/userId
+Content-Type: application/json
+
+{
+  "firstName": "Jane"
+}
+
+### Delete a task
+DELETE https://cse341-week3-4-project.onrender.com/users/userId

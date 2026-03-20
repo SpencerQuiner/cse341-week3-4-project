@@ -1,46 +1,52 @@
-const mongoose = require('mongoose');
 const Task = require('../models/task')
 
 // GET all tasks
-const getAll = async (req, res) => {
+const getAll = async (req, res, next) => {
     //#swagger.tags =['tasks']
     try {
-        const tasks = await Task.find();
+        const userId = req.user?.id || req.headers['user-id'];
+        const query = userId ? {userId} : {};
+        const tasks = await Task.find(query);
         res.status(200).json(tasks);
     } catch (err) {
-        res.status(500).json({ message: err.message})
+        res.status(500);
+        next(err);
     }
     
 };
 
 // GET single task
-const getSingle = async (req, res) => {
+const getSingle = async (req, res, next) => {
     //#swagger.tags =['tasks']
     try {
         const task =await Task.findById(req.params.id);
         if (!task) {
-            return res.status (404).json({message: 'Task not found' });
+            res.status(404);
+            throw new Error('Task not found' );
         }
         res.status(200).json(task);
     } catch (err) {
-        res.status(500).json({message: err.message });
+        res.status(500);
+        next(err);
     } 
 };
 
 //POST -create new tastk
-const createTask = async(req, res) => {
+const createTask = async(req, res, next) => {
     //#swagger.tags =['tasks']
     try {
-        const task = new Task(req.body);
+        const userId = req.user?.id || req.headers['user-id'];
+        const task = new Task({...req.body, userId});
         const savedTask = await task.save();
         res.status(201).json(savedTask);
     } catch (err) {
-        res.status(400).json({message: err.message});
+        res.status(400)
+        next(err);
     }
 };
 
 //PUT update task
-const updateTask = async(req, res) => {
+const updateTask = async(req, res, next) => {
     //#swagger.tags =['tasks']
     try {
         const updatedTask = await Task.findByIdAndUpdate(
@@ -49,27 +55,31 @@ const updateTask = async(req, res) => {
             {returnDocument: 'after', runValidators: true}
         );
         if (!updatedTask) {
-            return res.status(404).json({ message: 'Task not found' });
+            res.status(404);
+            throw new Error('Task not found' );
         }
 
         res.status(200).json(updatedTask);
     } catch (err) {
-        res.status(400).json({ message: err.message});
+        res.status(500);
+        next(err);
     }
 };
 
-const deleteTask = async(req, res) => {
+const deleteTask = async(req, res, next) => {
     //#swagger.tags =['tasks']
     try {
         const deletedTask = await Task.findByIdAndDelete(req.params.id);
 
         if (!deletedTask) {
-            return res.status(404).json({ message: 'Task not found' });
+            res.status(404);
+            throw new Error('Task not found' );
         }
 
         res.status(200).json({ message: 'Task deleted' });
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500);
+        next(err);
     }
 };
 

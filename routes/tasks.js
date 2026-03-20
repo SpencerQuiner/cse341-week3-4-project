@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
+const validateTask = require('../middleware/validateTask');
+const validateObjectId = require('../middleware/validateObjectId');
 const taskController = require('../controllers/taskController');
 
 /**
@@ -22,7 +23,7 @@ router.get('/:id',
     #swagger.tags = ['Tasks']
     #swagger.description = 'Get a single task by ID'
     */
-    taskController.getSingle
+    validateObjectId, taskController.getSingle
 );
 
 /**
@@ -46,7 +47,7 @@ router.post('/',
         }
     }
     */
-    taskController.createTask
+    validateTask.validateCreate, taskController.createTask
 );
 
 /**
@@ -66,7 +67,7 @@ router.put('/:id',
         }
     }
     */
-    taskController.updateTask
+    validateObjectId, validateTask.validateUpdate, taskController.updateTask
 );
 
 /**
@@ -77,7 +78,7 @@ router.delete('/:id',
     #swagger.tags = ['Tasks']
     #swagger.description = 'Delete a task'
     */
-    taskController.deleteTask
+    validateObjectId, taskController.deleteTask
 );
 
 module.exports = router;
