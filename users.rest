@@ -2,25 +2,25 @@
 GET https://cse341-week3-4-project.onrender.com/users
 
 ### Get single user
-GET https://cse341-week3-4-project.onrender.com/users/userId
+GET https://cse341-week3-4-project.onrender.com/users/69be64355ccf7087364cd016
 
 ### Create a user
 POST https://cse341-week3-4-project.onrender.com/users
 Content-Type: application/json
 
 {
-  "firstName": "Jane",
-  "lastName": "Doe",
-  "email": "jane@email.com"
+  "firstName": "Famara",
+  "lastName": "Quiner",
+  "email": "Fquiner@email.com"
 }
 
 ### Update a user
-PUT https://cse341-week3-4-project.onrender.com/users/userId
+PUT https://cse341-week3-4-project.onrender.com/users/69be61c55ccf7087364ccfff
 Content-Type: application/json
 
 {
-  "firstName": "Jane"
+  
 }
 
 ### Delete a task
-DELETE https://cse341-week3-4-project.onrender.com/users/69bda0fc9667bda292c47097
+DELETE https://cse341-week3-4-project.onrender.com/users/69be62215ccf7087364cd003

@@ -1,5 +1,4 @@
-const user = require('../models/user');
-const User = require('../models/user')
+const User = require('../models/user');
 
 // GET all users
 const getAll = async (req, res, next) => {
@@ -23,7 +22,7 @@ const getSingle = async (req, res, next) => {
             res.status(404);
             throw new Error('User not found' );
         }
-        res.status(200).json(task);
+        res.status(200).json(user);
     } catch (err) {
         res.status(500);
         next(err);
