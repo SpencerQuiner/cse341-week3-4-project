@@ -16,7 +16,6 @@ router.get('/',
     */
     requireAuth, taskController.getAll
 );
-
 /**
  * GET single task
  */
