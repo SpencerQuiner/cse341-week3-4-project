@@ -3,12 +3,21 @@ const passport = require('passport');
 
 //Start GitHub login
 router.get('/github',
+    /*
+    #swagger.tags = ['Auth']
+    #swagger.description = 'Redirect to GitHub for authentication'
+    */
     passport.authenticate('github', { scope: ['user:email'] })
 );
 
 // Callback
 router.get(
-    '/github/callback', passport.authenticate('github', {
+    '/github/callback',
+    /*
+    #swagger.tags = ['Auth']
+    #swagger.description = 'GitHub OAuth callback'
+    */
+    passport.authenticate('github', {
         failureRedirect: '/'
     }),
     (req, res) => {
@@ -17,7 +26,12 @@ router.get(
 );
 
 //Logout
-router.get('/logout', (req, res) => {
+router.get('/logout',
+    /*
+    #swagger.tags = ['Auth']
+    #swagger.description = 'Logout current user'
+    */
+    (req, res) => {
     req.logout(err => {
         if (err) return next(err);
         res.redirect('/');
@@ -25,7 +39,12 @@ router.get('/logout', (req, res) => {
 });
 
 //Current user
-router.get('/me', (req, res) => {
+router.get('/me',
+    /*
+    #swagger.tags = ['Auth']
+    #swagger.description = 'Get current authenticated user'
+    */
+    (req, res) => {
     res.json(req.user || null);
 });
 

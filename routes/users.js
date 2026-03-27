@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const requireAuth = require('../middleware/auth');
 
 const userController = require('../controllers/userController');
 const validateUser = require('../middleware/validateUser');
@@ -13,7 +14,7 @@ router.get('/',
     #swagger.tags = ['Users']
     #swagger.description = 'Get all users'
     */
-    userController.getAll);
+    requireAuth, userController.getAll);
 
 /**
  * GET single user
@@ -23,7 +24,7 @@ router.get('/:id',
     #swagger.tags = ['Users']
     #swagger.description = 'Get a single user by ID'
     */
-    validateObjectId, userController.getSingle);
+    requireAuth, validateObjectId, userController.getSingle);
 
 /**
  * CREATE user
@@ -31,7 +32,7 @@ router.get('/:id',
 router.post('/', 
     /*
     #swagger.tags = ['Users']
-    #swagger.description = 'Create a new user'
+    #swagger.description = 'Create a new user. For testing/admin use only. Users are normally created via OAuth.'
     #swagger.parameters['body'] = {
         in: 'body',
         description: 'User data',
@@ -43,7 +44,7 @@ router.post('/',
         }
     }
     */
-    validateUser.validateCreate, userController.createUser);
+    requireAuth, validateUser.validateCreate, userController.createUser);
 
 /**
  * UPDATE user
@@ -61,7 +62,7 @@ router.put('/:id',
         }
     }
     */
-    validateObjectId, validateUser.validateUpdate, userController.updateUser);
+    requireAuth, validateObjectId, validateUser.validateUpdate, userController.updateUser);
 
 /**
  * DELETE user
@@ -71,6 +72,6 @@ router.delete('/:id',
     #swagger.tags = ['Users']
     #swagger.description = 'Delete a user'
     */
-    validateObjectId, userController.deleteUser);
+    requireAuth, validateObjectId, userController.deleteUser);
 
 module.exports = router;
