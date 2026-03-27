@@ -1,6 +1,6 @@
 ### Get all tasks
 GET https://cse341-week3-4-project.onrender.com/tasks
-user-id: 69be61c55ccf7087364ccfff
+user-id: 69be64355ccf7087364cd016
 
 ### Get single task
 GET https://cse341-week3-4-project.onrender.com/tasks/69be64885ccf7087364cd01a
@@ -8,26 +8,26 @@ user-id: 69be61c55ccf7087364ccfff
 
 ### Create a task
 POST https://cse341-week3-4-project.onrender.com/tasks
-user-id: 69be64355ccf7087364cd016
+user-id: 69be61c55ccf7087364ccfff
 Content-Type: application/json
 
 {
-  "title": "clean room",
-  "description": "the room is a disaster it needs cleaning",
+  "title": "finish project",
+  "description": "cse341 project due soon",
   "status": "pending",
   "priority": "high",
   "dueDate": "2026-03-25"
 }
 
 ### Update a task
-PUT https://cse341-week3-4-project.onrender.com/tasks/69be62785ccf7087364cd00a
-user-id: 69be61c55ccf7087364ccfff
+PUT https://cse341-week3-4-project.onrender.com/tasks/69be64885ccf7087364cd01a
+user-id: 69be64355ccf7087364cd016
 Content-Type: application/json
 
 {
-  "title": "Add task list to render"
+  "title": "room needs sweeping"
 }
 
 ### Delete a task
-DELETE https://cse341-week3-4-project.onrender.com/tasks/69be62785ccf7087364cd00a
-user-id: 69be61c55ccf7087364ccfff
+DELETE https://cse341-week3-4-project.onrender.com/tasks/69be64885ccf7087364cd01a
+user-id: 69be64355ccf7087364cd016

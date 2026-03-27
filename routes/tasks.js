@@ -3,6 +3,8 @@ const router = express.Router();
 const validateTask = require('../middleware/validateTask');
 const validateObjectId = require('../middleware/validateObjectId');
 const taskController = require('../controllers/taskController');
+const requireAuth = require('../middleware/auth');
+
 
 /**
  * GET all tasks
@@ -12,7 +14,7 @@ router.get('/',
     #swagger.tags = ['Tasks']
     #swagger.description = 'Get all tasks'
     */
-    taskController.getAll
+    requireAuth, taskController.getAll
 );
 
 /**
@@ -23,7 +25,7 @@ router.get('/:id',
     #swagger.tags = ['Tasks']
     #swagger.description = 'Get a single task by ID'
     */
-    validateObjectId, taskController.getSingle
+    requireAuth, validateObjectId, taskController.getSingle
 );
 
 /**
@@ -47,7 +49,7 @@ router.post('/',
         }
     }
     */
-    validateTask.validateCreate, taskController.createTask
+    requireAuth, validateTask.validateCreate, taskController.createTask
 );
 
 /**
@@ -67,7 +69,7 @@ router.put('/:id',
         }
     }
     */
-    validateObjectId, validateTask.validateUpdate, taskController.updateTask
+    requireAuth, validateObjectId, validateTask.validateUpdate, taskController.updateTask
 );
 
 /**
@@ -78,7 +80,7 @@ router.delete('/:id',
     #swagger.tags = ['Tasks']
     #swagger.description = 'Delete a task'
     */
-    validateObjectId, taskController.deleteTask
+    requireAuth, validateObjectId, taskController.deleteTask
 );
 
 module.exports = router;

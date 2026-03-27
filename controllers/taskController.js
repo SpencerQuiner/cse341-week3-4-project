@@ -4,7 +4,7 @@ const Task = require('../models/task')
 const getAll = async (req, res, next) => {
     //#swagger.tags =['tasks']
     try {
-        const userId = req.user?.id || req.headers['user-id'];
+        const userId = req.user?.id;
         const query = userId ? {userId} : {};
         const tasks = await Task.find(query);
         res.status(200).json(tasks);
