@@ -2,7 +2,7 @@
 GET https://cse341-week3-4-project.onrender.com/users
 
 ### Get single user
-GET https://cse341-week3-4-project.onrender.com/users/69be64355ccf7087364cd0
+GET https://cse341-week3-4-project.onrender.com/users/69c6b69076ce36cfb3474cdc
 
 ### Create a user
 POST https://cse341-week3-4-project.onrender.com/users
